@@ -21,6 +21,6 @@ public class Anggota {
         System.out.println("ID anggota " + idAnggota);
         System.out.println("Nama Anggota " + nama);
         System.out.println("Nomor Telepon " + noTelepon);
-        System.out.println("-----------------------------");
+        System.out.println("Zulfahmi");
     }
 }
