@@ -13,27 +13,51 @@ public class Main{
             System.out.println("6. Kembalikan Buku");
             System.out.println("7. Lihat Daftar peminjaman");
             System.out.println("8. Keluar");
-            System.out.print("Pilih Menu (1-8)");
+            System.out.print("Pilih Menu (1-8): ");
             int pilihan = input.nextInt();
             input.nextLine();
             switch (pilihan) {
                 case 1:
-                    System.out.println("Tambah Buku: ");
-                    System.out.println("Kode Buku: ");
+                    System.out.print("Tambah Buku: ");
+                    System.out.println("Pilih Tipe Buku");
+                    System.out.println("1. Buku Fisik");
+                    System.out.println("2. Buku Digital");
+                    System.out.print("Pilihan (1/2): ");
+                    int TipeBuku = input.nextInt();
+                    input.nextLine();
+
+                    System.out.print("Kode Buku: ");
                     String kode = input.nextLine();
-                    System.out.println("Judul: ");
+                    System.out.print("Judul: ");
                     String judul = input.nextLine();
-                    System.out.println("Pengarang: ");
+                    System.out.print("Pengarang: ");
                     String pengarang = input.nextLine();
+                    if (TipeBuku == 1) {
+                        System.out.print("Lokasi Rak : ");
+                        String lokasi = input.nextLine();
+                        System.out.print("Jumlah Halaman : ");
+                        int halaman = input.nextInt();
+                        input.nextLine();
+                        perpus.tambahBuku(new BukuFisik(kode, judul, pengarang, lokasi, halaman));
+                    } else if (TipeBuku == 2) {
+                        System.out.print("Format File(PDF/EPUB/MOBI: )");
+                        String format = input.nextLine();
+                        System.out.print("Ukuran File(MB): ");
+                        int ukuran = input.nextInt();
+                        input.nextLine();
+                        perpus.tambahBuku(new BukuDigital(kode, judul, pengarang, format, ukuran));
+                    } else{
+                        System.out.println("Pilihan Tidak Valid");
+                    }
                     perpus.tambahBuku(new Buku(kode, judul, pengarang));
                     break;
                 case 2:
                     System.out.println("Tambah Anggota");
                     System.out.print("ID Anggota: ");
                     String id = input.nextLine();
-                    System.out.println("Nama: ");
+                    System.out.print("Nama: ");
                     String nama = input.nextLine();
-                    System.out.println("No telepon: ");
+                    System.out.print("No telepon: ");
                     String telp = input.nextLine();
                     perpus.tambahAnggota(new Anggota(id, nama, telp));
                     break;
@@ -45,17 +69,17 @@ public class Main{
                     break;
                 case 5:
                     System.out.println("Pinjam Buku");
-                    System.out.println("Kode Buku");
+                    System.out.print("Kode Buku: ");
                     String kodebk = input.nextLine();
-                    System.out.println("ID Anggota");
+                    System.out.print("ID Anggota: ");
                     String idPeminjam = input.nextLine();
-                    System.out.println("Tanggal (DD/MM/YYYY)");
+                    System.out.print("Tanggal (DD/MM/YYYY): ");
                     String tanggal = input.nextLine();
                     perpus.pinjamBuku(kodebk, idPeminjam, tanggal);
                     break;
                 case 6:
                     System.out.println(" Kembalikan Buku");
-                    System.out.println("Kode Buku: ");
+                    System.out.print("Kode Buku: ");
                     String kodeKembali = input.nextLine();
                     perpus.kembalikanBuku(kodeKembali);
                     break;
